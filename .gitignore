@@ -1,0 +1,8 @@
+/target/
+/result
+/previews/*.png
+/previews/*.gif
+!/previews/verdant.png
+!/previews/verdant.gif
+/previews/*.log
+/previews/*.pid

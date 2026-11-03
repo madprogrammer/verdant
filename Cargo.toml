@@ -1,0 +1,24 @@
+[package]
+name = "verdant"
+version = "0.1.0"
+edition = "2021"
+description = "A quiet, GPU-rendered ASCII tree wallpaper for Wayland"
+license = "MIT"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+glow = "0.16"
+image = { version = "0.25", default-features = false, features = ["jpeg", "png"] }
+khronos-egl = { version = "6", features = ["dynamic"] }
+libc = "0.2"
+wayland-client = { version = "0.31", features = ["system"] }
+wayland-egl = "0.32"
+wayland-protocols = { version = "0.32", features = ["client"] }
+wayland-protocols-wlr = { version = "0.3", features = ["client"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
+panic = "abort"
