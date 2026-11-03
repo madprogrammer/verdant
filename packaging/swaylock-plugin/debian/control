@@ -1,0 +1,20 @@
+Source: swaylock-plugin
+Section: x11
+Priority: optional
+Maintainer: Verdant packaging <madprogrammer@users.noreply.github.com>
+Build-Depends: debhelper-compat (= 13), meson (>= 0.59), ninja-build, pkg-config,
+ libwayland-dev (>= 1.20), libxkbcommon-dev, libcairo2-dev, libpam0g-dev,
+ libsystemd-dev, scdoc
+Standards-Version: 4.6.2
+Homepage: https://github.com/mstoeckl/swaylock-plugin
+Rules-Requires-Root: no
+
+Package: swaylock-plugin
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpam-runtime
+Recommends: swaybg
+Description: Wayland screen locker with animated wallpaper plugins
+ A swaylock fork that forwards layer-shell wallpaper applications to locked
+ outputs, including GPU accelerated wallpapers such as Verdant. Requires a
+ compositor implementing ext-session-lock-v1, such as Sway 1.9.
+ Uses the host PAM login stack and installs alongside the distribution swaylock.

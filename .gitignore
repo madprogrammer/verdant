@@ -1,8 +1,10 @@
 /target/
 /result
+/dist/
 /previews/*.png
 /previews/*.gif
 !/previews/verdant.png
 !/previews/verdant.gif
+!/previews/lockscreen.png
 /previews/*.log
 /previews/*.pid

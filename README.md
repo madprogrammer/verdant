@@ -175,6 +175,26 @@ A [12-second animated preview](previews/verdant.gif) is also available, captured
 
 There are two full-screen triangle draws per frame, no per-frame image decoding or texture uploads at a stable resolution, no depth buffer, no MSAA, and no CPU rasterization. Paused and static modes retain the last buffer and perform no further draws unless resized. The event loop wakes at most once per second while idle so signal handling remains responsive.
 
+## Lock screen on Sway
+
+Verdant also runs inside [swaylock-plugin](https://github.com/mstoeckl/swaylock-plugin).
+Use one instance per locked output:
+
+```sh
+swaylock-plugin -f -c 020805 \
+  --command-each 'exec verdant --fps 12 --max-width 1280 --columns 200 --brightness 0.75' \
+  --inside-color 06140de6 --ring-color 2c7047ff --text-color c5f5d7ff \
+  --key-hl-color 8fe8adff --line-uses-inside --separator-color 00000000
+```
+
+An [Ubuntu 24.04 amd64 package and build recipe](packaging/swaylock-plugin/README.md)
+are provided for systems that need native PAM/SSSD authentication. The locker
+uses Ubuntu libraries; Verdant can stay managed by Nix. Rendering and keyboard
+indication were verified on two headless Sway 1.9 outputs on Ubuntu using Intel
+ARL graphics. Password authentication needs an interactive check on the target.
+
+![Verdant lock screen with green password indicator](previews/lockscreen.png)
+
 ## Development
 
 ```sh
